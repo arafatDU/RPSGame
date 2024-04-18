@@ -1,0 +1,13 @@
+{
+  "name": "rpsgame",
+  "version": "1.0.0",
+  "description": "A Rock-Paper-Scissors console game, crafted with JavaScript, adds an extra layer of excitement with HMAC cryptography.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
