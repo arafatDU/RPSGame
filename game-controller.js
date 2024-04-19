@@ -13,12 +13,13 @@ class GameController {
     const hmac = HMAC.generateHMAC(cMove, key);
     this.menu(hmac);
 
-    const uMove = this.moves[Math.floor(Math.random() * this.moves.length)];
-    const result = this.rules.findWinner(uMove, cMove);
+    //const uMove = this.moves[Math.floor(Math.random() * this.moves.length)];
+    const uMove = this.moves[0];
+    //const result = this.rules.findWinner(uMove, cMove);
 
     console.log(`Your move: ${uMove}`);
     console.log(`Computer move: ${cMove}`);
-    console.log(result);
+    console.log(this.rules.findWinner(uMove, cMove));
     console.log(`HMAC key: ${key}`);
 
   }
