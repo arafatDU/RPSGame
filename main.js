@@ -1,3 +1,5 @@
+import GameController from "./game-controller.js";
+import Rules from "./game-rules.js"
 
 function main() {
   try {
@@ -6,6 +8,9 @@ function main() {
       throw new Error('Invalid input. Try node main.js move1 move2 move3 ...(odd number)');
     }
     console.log(moves);
+    const rules = new Rules(moves);
+    const game = new GameController(moves, rules);
+    game.play();
 
   } catch (e) {
     console.error(e.message);
