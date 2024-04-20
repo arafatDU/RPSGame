@@ -1,7 +1,7 @@
 import GameController from "./game-controller.js";
 import Rules from "./game-rules.js"
 
-function main() {
+async function main() {
   try {
     const moves = process.argv.slice(2);
     if(moves.length % 2 === 0 || moves.length < 3 || moves.length !== new Set(moves).size) {
@@ -10,7 +10,7 @@ function main() {
     console.log(moves);
     const rules = new Rules(moves);
     const game = new GameController(moves, rules);
-    game.play();
+    await game.play();
 
   } catch (e) {
     console.error(e.message);
