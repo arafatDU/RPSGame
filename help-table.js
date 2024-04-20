@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+import { AsciiTable3, AlignmentEnum } from 'ascii-table3';
 
 
 class Table {
@@ -26,18 +28,34 @@ class Table {
   }
 
   static displayTable(tableArray) {
-    const table = new AsciiTable();
-  
-    // Add header row
-    tableArray[0].forEach(cell => table.addRow(cell));
-    table.setHeadingAlign(AsciiTable.CENTER);
-  
-    // Add remaining rows
+    const table = new AsciiTable3();
+    table.setHeading(...tableArray[0]);
+    table.setAlignCenter(0);
     for (let i = 1; i < tableArray.length; i++) {
-      tableArray[i].forEach(cell => table.addRow(cell));
+      table.addRow(...tableArray[i]);
+      if (i < tableArray.length - 1) {
+        const separator = new Array(tableArray[0].length).fill('-');
+        table.addRow(separator);
     }
-  
+    }
     console.log(table.toString());
+  }
+
+  static printTable(moves) {
+    const table = this.generateTable(moves);
+    const totalLength = 15 + (moves.length * 12);
+    const separator = chalk.greenBright('+'.padEnd(totalLength, '-'));
+
+    console.log(chalk.bold.blueBright('Result in what? You Win / Lose / Draw\n'));
+    console.log(separator);
+    console.log(`| ${chalk.bold.red('v PC\\User >')}  | ${moves.map((move) => chalk.bold.blueBright(move.padEnd(9))).join(' | ')}|`);
+    console.log(separator);
+
+    for (let i = 1; i < table.length; i++) {
+      const row = table[i];
+      console.log(`| ${chalk.bold.blueBright(row[0].padEnd(13))}| ${row.slice(1).map((cell) => cell.padEnd(9)).join(' | ')}|`);
+      console.log(separator);
+    }
   }
 }
 

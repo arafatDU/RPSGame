@@ -22,7 +22,9 @@ class GameController {
       } else if (userInput === "?") {
         console.log("Table");
         const table = Table.generateTable(this.moves);
-        console.table(table);
+        //console.table(table);
+        //Table.displayTable(table);
+        Table.printTable(this.moves);
 
       } else {
         const uIndex = Number(userInput) - 1;
