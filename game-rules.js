@@ -1,3 +1,5 @@
+import chalk from "chalk";
+
 class Rules {
   constructor(moves) {
     this.moves = moves;
@@ -15,11 +17,11 @@ class Rules {
 
     const winer = Math.sign(((a - b + p + n) % n) - p);
     if (winer === 1) {
-      return "Computer win";
+      return chalk.red("Computer win");
     } else if (winer === -1) {
-      return "Your win";
+      return chalk.green("You win!");
     } else {
-      return "Draw";
+      return chalk.yellow("Game Draw");
     }
   }
 }

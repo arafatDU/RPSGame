@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { AsciiTable3, AlignmentEnum } from 'ascii-table3';
+import { AsciiTable3 } from 'ascii-table3';
 
 
 class Table {

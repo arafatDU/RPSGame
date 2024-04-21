@@ -1,4 +1,5 @@
 import readline from 'readline';
+import chalk from 'chalk';
 import HMAC from './hmac-generator.js';
 import Table from './help-table.js';
 
@@ -12,30 +13,28 @@ class GameController {
     const cMove = this.moves[Math.floor(Math.random() * this.moves.length)];
     const key = HMAC.generateKey(32);
     const hmac = HMAC.generateHMAC(cMove, key);
+
+    console.log(chalk.green("      ******************************************************"));
+    console.log(chalk.green("      *") + chalk.yellow("             Welcome to the RPSGame                 ") + chalk.green("*"));
+    console.log(chalk.green("      ******************************************************"));
   
     while (true) {
       this.menu(hmac);
-  
-      const userInput = await this.input("Enter your move: ");
+      const userInput = await this.input(chalk.bold("Enter your move: "));
       if (userInput === "0") {
         break;
       } else if (userInput === "?") {
-        console.log("Table");
-        const table = Table.generateTable(this.moves);
-        //console.table(table);
-        //Table.displayTable(table);
         Table.printTable(this.moves);
-
       } else {
         const uIndex = Number(userInput) - 1;
         if(isNaN(uIndex) || uIndex < 0 || uIndex >= this.moves.length){
-          console.log("Invalid move");
+          console.log(chalk.red(`Invalid move: Please enter a valid move number.(1-${this.moves.length})`));
         } else {
           const uMove = this.moves[uIndex];
-          console.log(`Your move: ${uMove}`);
-          console.log(`Computer move: ${cMove}`);
+          console.log(chalk.bold(`Your move: ${uMove}`));
+          console.log(chalk.bold(`Computer move: ${cMove}`));
           console.log(this.rules.findWinner(uMove, cMove));
-          console.log(`HMAC key: ${key}`);
+          console.log(chalk.blue(`HMAC key: ${key}`));
           break;
         }
       }
@@ -44,11 +43,11 @@ class GameController {
   
 
   menu(cHmac) {
-    console.log("HMAC: ", cHmac);
-    console.log("Available moves");
-    this.moves.forEach((el, i) => console.log(`${i + 1} - ${el}`));
-    console.log("0 - exit");
-    console.log("? - help");
+    console.log(chalk.bold.blueBright(`HMAC: ${cHmac}`));
+    console.log(chalk.bold("Available moves:"));
+    this.moves.forEach((el, i) => console.log(chalk.cyan(`${i + 1} - ${el}`)));
+    console.log(chalk.red("0 - exit"));
+    console.log(chalk.yellow("? - help"));
   }
 
   async input(msg) {
