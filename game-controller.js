@@ -14,9 +14,9 @@ class GameController {
     const key = HMAC.generateKey(32);
     const hmac = HMAC.generateHMAC(cMove, key);
 
-    console.log(chalk.green("      ******************************************************"));
-    console.log(chalk.green("      *") + chalk.yellow("             Welcome to the RPSGame                 ") + chalk.green("*"));
-    console.log(chalk.green("      ******************************************************"));
+    console.log(chalk.green("\t******************************************************"));
+    console.log(chalk.green("\t*") + chalk.yellow("\t\tWelcome to the RPSGame               ") + chalk.green("*"));
+    console.log(chalk.green("\t******************************************************"));
   
     while (true) {
       this.menu(hmac);
@@ -35,6 +35,7 @@ class GameController {
           console.log(chalk.bold(`Computer move: ${cMove}`));
           console.log(this.rules.findWinner(uMove, cMove));
           console.log(chalk.blue(`HMAC key: ${key}`));
+          console.log(chalk.dim("You can verify the HMAC key at https://www.freeformatter.com/hmac-generator.html"));
           break;
         }
       }
