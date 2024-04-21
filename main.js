@@ -15,7 +15,6 @@ async function main() {
       node main.js  1 2 3 4    5 6 7     8 9
       `));
     }
-    console.log(moves);
     const rules = new Rules(moves);
     const game = new GameController(moves, rules);
     await game.play();

@@ -14,9 +14,9 @@ class GameController {
     const key = HMAC.generateKey(32);
     const hmac = HMAC.generateHMAC(cMove, key);
 
-    console.log(chalk.green("\t******************************************************"));
+    console.log(chalk.green("\n\n\t******************************************************"));
     console.log(chalk.green("\t*") + chalk.yellow("\t\tWelcome to the RPSGame               ") + chalk.green("*"));
-    console.log(chalk.green("\t******************************************************"));
+    console.log(chalk.green("\t******************************************************\n"));
   
     while (true) {
       this.menu(hmac);
