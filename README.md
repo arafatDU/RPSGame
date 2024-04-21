@@ -1,3 +1,9 @@
+<a name="readme-top"></a>
+
+<div align="center">
+  <h3><b>RPSGame</b></h3>
+</div>
+
 ## 🚀 Introduction <a name="introduction"></a>
 A Rock-Paper-Scissors console game, crafted with JavaScript, adds an extra layer of excitement with HMAC cryptography.
 
